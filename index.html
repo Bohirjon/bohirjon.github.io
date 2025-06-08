@@ -130,28 +130,37 @@
                     <div class="tab" data-tab="tools3">Tools</div>
                 </div>
                 <div class="tab-content active" id="description3-content">
-                    <p class="placeholder-text">More info coming soon...</p>
+                    <p><strong>Definition:</strong> Ensuring only properly formatted data enters a software system component</p>
+                    <p><strong>Key Concepts:</strong> Syntactic validity (correct form) and semantic validity (acceptable range)</p>
                 </div>
                 <div class="tab-content" id="threats3-content">
                     <ul>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
+                        <li><strong>SQL Injection:</strong> Manipulating database queries to access unauthorized data</li>
+                        <li><strong>Cross-Site Scripting (XSS):</strong> Injecting malicious scripts executed in users' browsers</li>
+                        <li><strong>Remote Command Execution:</strong> Injecting system commands to execute arbitrary code</li>
+                        <li><strong>Buffer Overflows:</strong> Supplying excessive input to overwrite memory and execute code</li>
+                        <li><strong>Path Traversal:</strong> Accessing unauthorized files through directory manipulation</li>
                     </ul>
                 </div>
                 <div class="tab-content" id="implementation3-content">
                     <ul>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
+                        <li><strong>Allowlisting vs Denylisting:</strong> Prefer allowlisting (known good) over denylisting (known bad)</li>
+                        <li><strong>Server-Side Validation:</strong> Never rely on client-side validation alone for security</li>
+                        <li><strong>Parametrized Queries:</strong> Use prepared statements/ORMs to prevent SQL injection</li>
+                        <li><strong>Encode user inputs:</strong> Always encode user input to prevent vulnerabilities and data corruption. <code>&lt;, &gt;, &amp;</code> to <code>&amp;lt;, &amp;gt;, &amp;amp;</code></li>
                     </ul>
                 </div>
                 <div class="tab-content" id="vulnerabilities3-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p>OWASP Top 10: A03 Injection, A07 Cross-Site Scripting (XSS)</p>
+                    <p>CWE-20: Improper Input Validation</p>
+                    <p>CWE-116: Improper Encoding/Escaping of Output</p>
+                    <p>CWE-502: Deserialization of Untrusted Data</p>
                 </div>
                 <div class="tab-content" id="tools3-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p>Input validation libraries: OWASP ESAPI, Apache Commons Validator</p>
+                    <p>Sanitizers: DOMPurify, OWASP Java Encoder, HTML Purifier</p>
+                    <p>Framework validators: Spring Validator, Laravel Validation, ASP.NET Input Validation</p>
+                    <p>Testing tools: OWASP ZAP, Burp Suite for detecting injection vulnerabilities</p>
                 </div>
             </div>
         </section>
