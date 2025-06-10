@@ -225,28 +225,37 @@
                     <div class="tab" data-tab="tools5">Tools</div>
                 </div>
                 <div class="tab-content active" id="description5-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p><strong>Definition:</strong> Products resilient against exploitation out of the box without requiring extensive configuration</p>
+                    <p><strong>Key Benefit:</strong> Reduces burden on developers by providing a secure starting point rather than requiring manual hardening</p>
                 </div>
                 <div class="tab-content" id="threats5-content">
                     <ul>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
+                        <li><strong>Default Credential Exploitation:</strong> Attackers gain unauthorized access using unchanged default or well-known credentials(admin,admin, 1234 brand-name)</li>
+                        <li><strong>Overly Permissive Settings:</strong> Attackers leverage excessive permissions to access sensitive resources</li>
+                        <li><strong>Unnecessary Features:</strong> Attackers probe and exploit unused services that remain enabled by default. Exceptions, logs, stack trace</li>
+                        <li><strong>Missing Security Headers:</strong> XSS and other attacks succeed due to lenient default security configurations</li>
                     </ul>
                 </div>
                 <div class="tab-content" id="implementation5-content">
                     <ul>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
+                        <li><strong>Infrastructure-as-Code (IaC):</strong> Deploy using declarative templates for automated provisioning with secure defaults</li>
+                        <li><strong>Least Privilege Configurations:</strong> Ensure cloud storage and resources are private by default with minimal access</li>
+                        <li><strong>Deny-by-Default Access:</strong> Implement allowlist-based access control instead of permissive defaults</li>
+                        <li><strong>Secure Container Images:</strong> Use scanned images from private registries with minimal attack surface</li>
+                        <li><strong>Mandatory Encryption:</strong> Enable traffic encryption by default and disable unencrypted channels</li>
+                        <li><strong>Disable Unnecessary Features:</strong> Remove demo capabilities, accounts, and debug features in production</li>
                     </ul>
                 </div>
                 <div class="tab-content" id="vulnerabilities5-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p>OWASP Top 10 2021 A05: Security Misconfiguration</p>
+                    <p>CWE-276: Incorrect Default Permissions</p>
+                    <p>CWE-732: Incorrect Permission Assignment for Critical Resource</p>
                 </div>
                 <div class="tab-content" id="tools5-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p>Infrastructure scanning: Tfsec, Terrascan, Checkov, KICS</p>
+                    <p>Cloud security auditing: Scout Suite, Prowler, CloudMapper</p>
+                    <p>Container scanning: Trivy, Snyk, Docker Bench Security</p>
+                    <p>Kubernetes security: Kubescape, Kyverno, OPA Gatekeeper</p>
                 </div>
             </div>
         </section>
