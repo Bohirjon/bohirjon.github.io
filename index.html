@@ -233,7 +233,17 @@
                         <li><strong>Default Credential Exploitation:</strong> Attackers gain unauthorized access using unchanged default or well-known credentials(admin,admin, 1234 brand-name)</li>
                         <li><strong>Overly Permissive Settings:</strong> Attackers leverage excessive permissions to access sensitive resources</li>
                         <li><strong>Unnecessary Features:</strong> Attackers probe and exploit unused services that remain enabled by default. Exceptions, logs, stack trace</li>
-                        <li><strong>Missing Security Headers:</strong> XSS and other attacks succeed due to lenient default security configurations</li>
+                        <li>
+                            <strong>Missing Security Headers:</strong>
+                             XSS and other attacks succeed due to lenient default security configurations
+<pre><code class="language-csharp" style="color: #24292e; background: #f6f8fa; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
+<span style="color:#6a9955;">// Example: Setting secure HTTP headers in ASP.NET Core</span>
+<span style="color:#001080;">context</span>.Response.Headers.Add(<span style="color:#a31515;">"Content-Security-Policy"</span>, <span style="color:#a31515;">"default-src 'self'; script-src 'self';"</span>);
+<span style="color:#001080;">context</span>.Response.Headers.Add(<span style="color:#a31515;">"X-Content-Type-Options"</span>, <span style="color:#a31515;">"nosniff"</span>);
+<span style="color:#001080;">context</span>.Response.Headers.Add(<span style="color:#a31515;">"X-Frame-Options"</span>, <span style="color:#a31515;">"DENY"</span>);
+<span style="color:#001080;">context</span>.Response.Headers.Add(<span style="color:#a31515;">"Referrer-Policy"</span>, <span style="color:#a31515;">"no-referrer"</span>);
+</code></pre>
+                        </li>
                     </ul>
                 </div>
                 <div class="tab-content" id="implementation5-content">
