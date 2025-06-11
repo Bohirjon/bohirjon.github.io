@@ -337,28 +337,46 @@
                     <div class="tab" data-tab="tools7">Tools</div>
                 </div>
                 <div class="tab-content active" id="description7-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p><strong>Definition:</strong> Digital Identity is a unique representation of an individual or entity engaging in an online transaction</p>
+                    <p><strong>Key Components:</strong> Authentication (verification of identity claims) and session management (maintaining authentication state)</p>
                 </div>
                 <div class="tab-content" id="threats7-content">
                     <ul>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
+                        <li><strong>Brute Force Attacks:</strong> Attackers repeatedly guess passwords to gain unauthorized access</li>
+                        <li><strong>Credential Stuffing:</strong> Attackers use compromised username/password pairs from other breaches to gain access</li>
+                        <li><strong>Weak Passwords:</strong> Users choose easily guessable passwords, making accounts vulnerable to brute-force attacks</li>
                     </ul>
                 </div>
                 <div class="tab-content" id="implementation7-content">
                     <ul>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
+                        <li>
+                            <strong>Authentication Assurance Levels:</strong>
+                            <ul>
+                                <li>Level 1: Single-factor authentication (e.g., username/password)</li>
+                                <li>Level 2: Two-factor authentication (e.g., password + SMS code)</li>
+                                <li>Level 3: Multi-factor authentication with hardware tokens, this is typically done through hardware cryptographic modules</li>
+                        </li>
+                        <li>
+                            <strong>Strong Password Policies:</strong> 
+                            <ul>
+                                <li>Minimum length (e.g., 12 characters)</li>
+                                <li>Complexity requirements (uppercase, lowercase, numbers, symbols)</li>
+                                <li>Don't allow easy or common passwords</li>
+                        </li>
+                        <li>
+                            <strong>JWT Best Practices:</strong>
+                            <ul>
+                                <li>Use RS256 or ES256 instead of HS256 for better security</li>
+                                <li>Set appropriate expiration times (e.g., 15 minutes for access tokens, 7 days for refresh tokens)</li>
+                                <li>ALWAYS VALIDATE signature</li>
+                        </li>
                     </ul>
                 </div>
                 <div class="tab-content" id="vulnerabilities7-content">
-                    <p class="placeholder-text">Coming soon...</p>
-                </div>
-                <div class="tab-content" id="tools7-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p>OWASP Top 10 2021 A07: Identification and Authentication Failures</p>
+                    <p>OWASP Mobile Top 10 M4: Insecure Authentication</p>
+                    <p>CWE-384: Session Fixation</p>
+                    <p>CWE-352: Cross-Site Request Forgery</p>
                 </div>
             </div>
         </section>
