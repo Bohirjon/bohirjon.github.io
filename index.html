@@ -564,28 +564,76 @@
                     <div class="tab" data-tab="tools10">Tools</div>
                 </div>
                 <div class="tab-content active" id="description10-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p><strong>Definition:</strong> Server-Side Request Forgery (SSRF) attacks occur when an attacker can trick a server into making unintended requests to internal or external services, potentially bypassing security controls.</p>
+                    <p><strong>Key Concern:</strong> The outgoing request will be performed with the identity of the victim server, allowing the attacker to execute operations with elevated privileges.</p>
+                    <p><strong>Distinction:</strong> While traditional Injection Attacks target the victim server itself, SSRF attacks coerce the server to act as a proxy for the attacker's malicious requests.</p>
                 </div>
                 <div class="tab-content" id="threats10-content">
                     <ul>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
+                        <li><strong>DMZ Penetration:</strong> An attacker can access internal servers within the DMZ without passing through perimeter firewalls</li>
+                        <li><strong>Targeting Localhost Services:</strong> Many servers run local services on localhost without authentication, which can be exploited via SSRF</li>
+                        <li><strong>SSO Credential Theft:</strong> If Single Sign-On (SSO) is used, SSRF can extract tokens, tickets, or hashes from authentication services</li>
+                        <li><strong>Cloud Metadata Exploitation:</strong> Attackers can access sensitive cloud instance metadata (like AWS's 169.254.169.254) to steal credentials</li>
+                        <li><strong>Internal Network Scanning:</strong> SSRF can be used to map internal networks and discover vulnerable services</li>
+                        <li><strong>Data Exfiltration:</strong> Sending sensitive data to external servers controlled by the attacker</li>
                     </ul>
                 </div>
                 <div class="tab-content" id="implementation10-content">
                     <ul>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
+                        <li>
+                            <strong>Input Validation:</strong>
+                            <ul>
+                                <li>Strictly validate URL format and structure</li>
+                                <li>Be aware of Unicode and other character transformations that may bypass simple filters</li>
+                                <li>Don't rely solely on blocklists - they are often incomplete</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Implement Allowlisting:</strong>
+                            <ul>
+                                <li>Use domain/host allowlists for permitted external requests</li>
+                                <li>Only allow specific protocols (typically just HTTP/HTTPS)</li>
+                                <li>Restrict target ports to standard web ports (80, 443)</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Network-Level Controls:</strong>
+                            <ul>
+                                <li>Use firewall rules to prevent outbound connections to internal networks</li>
+                                <li>Implement network segmentation to isolate sensitive services</li>
+                                <li>Run services making external requests in separate environments with limited privileges</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>XML Security:</strong>
+                            <ul>
+                                <li>Configure XML parsers securely to prevent XML External Entity (XXE) attacks</li>
+                                <li>Disable document type definitions (DTDs) when possible</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Authentication for Service-to-Service Communication:</strong>
+                            <ul>
+                                <li>Require authentication for all internal service calls</li>
+                                <li>Use mutual TLS (mTLS) for service-to-service verification</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <div class="tab-content" id="vulnerabilities10-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p>OWASP Top 10 2021 A10: Server-Side Request Forgery (SSRF)</p>
+                    <p>CWE-918: Server-Side Request Forgery (SSRF)</p>
+                    <p>CWE-611: Improper Restriction of XML External Entity Reference</p>
+                    <p>CWE-441: Unintended Proxy/Intermediary</p>
+                    <p>CWE-610: Externally Controlled Reference to a Resource in Another Sphere</p>
                 </div>
                 <div class="tab-content" id="tools10-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p><strong>OWASP ModSecurity Core Rule Set (CRS)</strong>: WAF rules that can help detect and block SSRF attempts</p>
+                    <p><strong>URL Validators</strong>: Libraries like java.net.URL, python-validator, and URI.js for proper URL parsing and validation</p>
+                    <p><strong>Cloud Security Tools</strong>: AWS IMDSv2 (requires token for metadata access), Azure Private Link, GCP Metadata Authentication</p>
+                    <p><strong>SSRF Testing Tools</strong>: OWASP ZAP, Burp Suite Professional with SSRF Scanner, SSRFmap</p>
+                    <p><strong>Network Security Tools</strong>: Firewalls with egress filtering, Web Application Firewalls, API gateways</p>
+                    <p><strong>XML Security Libraries</strong>: OWASP XML Security CheatSheet, XMLSecLib, xml-security libraries</p>
                 </div>
             </div>
         </section>
