@@ -478,28 +478,76 @@
                     <div class="tab" data-tab="tools9">Tools</div>
                 </div>
                 <div class="tab-content active" id="description9-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p><strong>Security Logging Concept:</strong> Logging security information during runtime operation of an application, extending beyond regular debugging and diagnostic logging.</p>
+                    <p><strong>Security Monitoring:</strong> Live review of application and security logs using various forms of automation.</p>
+                    <p><strong>Main Goal:</strong> To detect and respond to potential security incidents.</p>
+                    <p><strong>Key Benefits:</strong></p>
+                    <ul>
+                        <li>Feeding intrusion detection systems</li>
+                        <li>Forensic analysis and investigations</li>
+                        <li>Satisfying regulatory compliance requirements</li>
+                    </ul>
                 </div>
                 <div class="tab-content" id="threats9-content">
                     <ul>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
-                        <li><strong>Bad Thing:</strong> What could go wrong...</li>
+                        <li><strong>Log Injection Attacks:</strong> Attackers manipulating log entries to insert malicious data or commands into log files.</li>
+                        <li><strong>Sensitive Information Exposure:</strong> Overly verbose logging inadvertently capturing and storing confidential data.</li>
+                        <li><strong>Log Tampering:</strong> Attackers erasing or modifying evidence of their intrusion to cover their tracks.</li>
+                        <li><strong>Denial of Service via Logging:</strong> Overwhelming logging systems with data floods to disrupt operations or obscure malicious actions.</li>
+                        <li><strong>Unauthorized Log Access:</strong> Improper access controls allowing attackers to view sensitive system information or user data.</li>
+                        <li><strong>Log Forging:</strong> Creating false audit trails to mislead investigators or frame innocent parties.</li>
+                        <li><strong>Insufficient Logging:</strong> Inadequate logging allowing attackers to conduct activities without detection.</li>
+                        <li><strong>Log File Race Conditions:</strong> Multi-threaded application vulnerabilities corrupting log data or exposing sensitive information.</li>
+                        <li><strong>Replay Attacks:</strong> Reusing captured data from logs to impersonate users or repeat authenticated actions.</li>
                     </ul>
                 </div>
                 <div class="tab-content" id="implementation9-content">
                     <ul>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
-                        <li><strong>Do This:</strong> How to fix it...</li>
+                        <li>
+                            <strong>Intrusion Detection Logging:</strong> Monitor and log potentially malicious activities:
+                            <ul>
+                                <li>Data outside expected numeric ranges</li>
+                                <li>Unauthorized modification attempts on restricted data</li>
+                                <li>Requests violating server-side access control rules</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Secure Logging Design:</strong>
+                            <ul>
+                                <li>Input validation: Allow expected characters only and encode input to prevent log injection</li>
+                                <li>Data protection: Avoid logging sensitive information (passwords, session IDs, credit cards)</li>
+                                <li>Log integrity: Protect logs from tampering through proper permissions and audit trails</li>
+                                <li>Centralization: Forward logs from distributed systems to a central, secure logging service</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Implementation Best Practices:</strong>
+                            <ul>
+                                <li>Standardization: Follow a common logging format across systems (e.g., Apache Logging Services)</li>
+                                <li>Balanced logging: Not too much, not too little - always include timestamp, source IP, user-ID</li>
+                                <li>Time synchronization: Ensure consistent timestamps across all nodes</li>
+                                <li>Active response: React to identified attacks (session invalidation, account locking)</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <div class="tab-content" id="vulnerabilities9-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p>OWASP Top 10 2021 A09: Security Logging and Monitoring Failures</p>
+                    <p>OWASP Top 10 2021 A04: Insecure Design (relates to insufficient logging)</p>
+                    <p>OWASP Top 10 2021 A01: Broken Access Control (improper log permissions)</p>
+                    <p>CWE-117: Improper Output Neutralization for Logs</p>
+                    <p>CWE-532: Insertion of Sensitive Information into Log File</p>
+                    <p>CWE-778: Insufficient Logging</p>
+                    <p>CWE-779: Logging of Excessive Data</p>
                 </div>
                 <div class="tab-content" id="tools9-content">
-                    <p class="placeholder-text">Coming soon...</p>
+                    <p><strong>Apache Logging Services</strong>: Framework for consistent logging across Java, PHP, .NET, and C++ applications</p>
+                    <p><strong>ELK Stack</strong> (Elasticsearch, Logstash, Kibana): Popular open-source logging and analytics platform</p>
+                    <p><strong>Graylog</strong>: Log management and analysis platform with security features</p>
+                    <p><strong>Splunk</strong>: Enterprise-grade security information and event management (SIEM) solution</p>
+                    <p><strong>OWASP Security Logging Project</strong>: Guidelines and implementations for security logging</p>
+                    <p><strong>Sumo Logic</strong>: Cloud-native machine data analytics service for security monitoring</p>
+                    <p><strong>AWS CloudWatch/CloudTrail</strong>: Cloud-based logging and monitoring services</p>
                 </div>
             </div>
         </section>
