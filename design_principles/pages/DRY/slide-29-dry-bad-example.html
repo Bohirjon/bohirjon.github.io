@@ -1,0 +1,58 @@
+<section class="slide" data-slide="29">
+    <h2>DRY (Don't Repeat Yourself)</h2>
+    <div class="subtitle">❌ Violating DRY - Duplicated Logic</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout" style="align-items: center; min-height: 80vh;">
+            <div class="good-code-column-borderless">
+                <div class="code-bad-large">
+                    <pre><code><span class="comment">// Duplicated calculation logic in multiple services</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">OrderService</span>
+{
+    <span class="keyword">public</span> <span class="keyword">decimal</span> CalculateTotal(<span class="type">Order</span> order)
+    {
+        <span class="problem"><span class="keyword">decimal</span> total = <span class="number">0</span>;
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> order.Items)
+            total += item.Price * item.Quantity;</span>
+        <span class="keyword">return</span> total;
+    }
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">InvoiceService</span>
+{
+    <span class="keyword">public</span> <span class="keyword">decimal</span> CalculateInvoiceTotal(<span class="type">Invoice</span> invoice)
+    {
+        <span class="problem"><span class="keyword">decimal</span> total = <span class="number">0</span>;
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> invoice.Items)
+            total += item.Price * item.Quantity;</span>
+        <span class="keyword">return</span> total;
+    }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>🚨 Problems with this approach:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔄</span>
+                            <span class="problem-text"><strong>Code duplication:</strong> Same calculation logic repeated</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🐛</span>
+                            <span class="problem-text"><strong>Bug prone:</strong> Fixing bugs requires updating multiple places</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔧</span>
+                            <span class="problem-text"><strong>Maintenance burden:</strong> Changes need to be made in all copies</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">⚠️</span>
+                            <span class="problem-text"><strong>Inconsistency risk:</strong> Logic can become out of sync</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

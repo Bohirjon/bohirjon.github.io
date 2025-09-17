@@ -1,0 +1,54 @@
+<section class="slide" data-slide="16">
+    <h2>Interface Segregation Principle (ISP)</h2>
+    <div class="subtitle">✅ Segregated Interfaces</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout">
+            <div class="good-code-column-borderless">
+                <pre><code><span class="comment">// Segregated interfaces based on specific roles</span>
+<span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IWorkable</span>
+{
+    <span class="keyword">void</span> Work();
+}
+
+<span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IEatable</span>
+{
+    <span class="keyword">void</span> Eat();
+}
+
+<span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IProgrammable</span>
+{
+    <span class="keyword">void</span> Program();
+}
+
+<span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IPlumber</span>
+{
+    <span class="keyword">void</span> FixPlumbing();
+}</code></pre>
+            </div>
+            
+            <div class="good-code-column-borderless">
+                <pre><code><span class="comment">// Classes implement only relevant interfaces</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">Developer</span> : <span class="type">IWorkable</span>, <span class="type">IEatable</span>, <span class="type">IProgrammable</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> Work() => <span class="type">Console</span>.WriteLine(<span class="string">"Writing code"</span>);
+    <span class="keyword">public</span> <span class="keyword">void</span> Eat() => <span class="type">Console</span>.WriteLine(<span class="string">"Eating lunch"</span>);
+    <span class="keyword">public</span> <span class="keyword">void</span> Program() => <span class="type">Console</span>.WriteLine(<span class="string">"Programming"</span>);
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">Plumber</span> : <span class="type">IWorkable</span>, <span class="type">IEatable</span>, <span class="type">IPlumber</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> Work() => <span class="type">Console</span>.WriteLine(<span class="string">"Fixing pipes"</span>);
+    <span class="keyword">public</span> <span class="keyword">void</span> Eat() => <span class="type">Console</span>.WriteLine(<span class="string">"Eating lunch"</span>);
+    <span class="keyword">public</span> <span class="keyword">void</span> FixPlumbing() => <span class="type">Console</span>.WriteLine(<span class="string">"Plumbing work"</span>);
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">Robot</span> : <span class="type">IWorkable</span>, <span class="type">IProgrammable</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> Work() => <span class="type">Console</span>.WriteLine(<span class="string">"Performing tasks"</span>);
+    <span class="keyword">public</span> <span class="keyword">void</span> Program() => <span class="type">Console</span>.WriteLine(<span class="string">"Executing code"</span>);
+    <span class="comment">// Robot doesn't eat - no need to implement IEatable!</span>
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>

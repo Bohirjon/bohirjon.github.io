@@ -1,0 +1,50 @@
+<section class="slide" data-slide="27">
+    <h2>KISS - Good Example</h2>
+    <div class="subtitle">✅ Simple and Clear Solution</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout">
+            <div class="good-code-column-borderless">
+                <pre><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="type">PaymentFactory</span>
+{
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">IPaymentProcessor</span> Create(<span class="keyword">string</span> processorName)
+    {
+        <span class="keyword">return</span> processorName <span class="keyword">switch</span>
+        {
+            <span class="string">"PayPal"</span> => <span class="keyword">new</span> <span class="type">PayPalProcessor</span>(),
+            <span class="string">"Stripe"</span> => <span class="keyword">new</span> <span class="type">StripeProcessor</span>(),
+            _ => <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">InvalidOperationException</span>(<span class="string">"Processor not found"</span>)
+        };
+    }
+}</code></pre>
+            </div>
+
+            <div class="problems-column" style="display: flex; align-items: center; justify-content: center;">
+                <div>
+                    <h4>✨ KISS Benefits:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">📖</span>
+                            <span class="problem-text"><strong>Readable</strong> - Anyone can understand it
+                                quickly</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔧</span>
+                            <span class="problem-text"><strong>Maintainable</strong> - Less risk of bugs and easier to
+                                modify</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">⚡</span>
+                            <span class="problem-text"><strong>Efficient</strong> - No wasted complexity or performance
+                                overhead</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🎯</span>
+                            <span class="problem-text"><strong>Direct</strong> - Compile-time safety and clear
+                                intent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

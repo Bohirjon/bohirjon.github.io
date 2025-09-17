@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Patterns and Principles Seminar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="presentation-container">
+        <header class="presentation-header">
+            <h1>Design Patterns and Principles</h1>
+        </header>
+
+
+
+        <main class="slides-container" id="slides-container">
+            <!-- Slides will be loaded dynamically from pages folder -->
+        </main>
+        <footer class="presentation-footer">
+            <div class="slide-navigation">
+                <button class="nav-control" onclick="previousSlide()">← Previous</button>
+                <span class="slide-counter">
+                    <span id="current-slide">1</span> / <span id="total-slides">6</span>
+                </span>
+                <button class="nav-control" onclick="nextSlide()">Next →</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

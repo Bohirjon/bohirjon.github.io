@@ -1,0 +1,60 @@
+<section class="slide" data-slide="7">
+    <h2>Open/Closed Principle (OCP)</h2>
+    <div class="subtitle"></div>
+    <div class="slide-content">
+        <div class="srp-bad-layout">
+            <div class="code-column">
+                <h3>⚠️ Violating OCP</h3>
+                <div>
+                    <h4>❌ Modifying for Every New Payment Type</h4>
+                    <pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PaymentService</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge(<span class="keyword">string</span> paymentType)
+    {
+        <span class="keyword">if</span> (paymentType == <span class="string">"CreditCard"</span>)
+        {
+            <span class="type">Console</span>.WriteLine(<span class="string">"Charging credit card..."</span>);
+        }
+        <span class="keyword">else</span> <span class="keyword">if</span> (paymentType == <span class="string">"PayPal"</span>)
+        {
+            <span class="type">Console</span>.WriteLine(<span class="string">"Charging PayPal..."</span>);
+        }
+        <span class="keyword">else</span> <span class="keyword">if</span> (paymentType == <span class="string">"ApplePay"</span>)
+        {
+            <span class="type">Console</span>.WriteLine(<span class="string">"Charging ApplePay..."</span>);
+        }
+        <span class="keyword">else</span>
+        {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">NotSupportedException</span>(<span class="string">"Unknown payment type"</span>);
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>� Problems with this approach:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔧</span>
+                            <span class="problem-text"><strong>Modification Required:</strong> Every new payment type requires editing the existing method</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🐛</span>
+                            <span class="problem-text"><strong>Risk of Bugs:</strong> Touching working code may introduce new bugs</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🌱</span>
+                            <span class="problem-text"><strong>Endless Growth:</strong> The if/else chain keeps growing indefinitely</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🧪</span>
+                            <span class="problem-text"><strong>Testing Nightmare:</strong> Must re-test all payment types when adding one</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

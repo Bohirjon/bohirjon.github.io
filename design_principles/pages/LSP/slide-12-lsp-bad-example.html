@@ -1,0 +1,63 @@
+<section class="slide" data-slide="11">
+    <h2></h2>
+    <div class="subtitle"></div>
+    <div class="slide-content">
+        <div class="srp-bad-layout" style="align-items: center; min-height: 80vh;">
+            <div class="good-code-column-borderless">
+                <div class="code-bad-large">
+                    <pre><code><span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">string</span> Name { <span class="keyword">get</span>; }
+    <span class="keyword">void</span> Charge(<span class="keyword">decimal</span> amount);
+    <span class="keyword">void</span> Refund(<span class="keyword">decimal</span> amount);
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">CreditCardPayment</span> : <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">public</span> <span class="keyword">string</span> Name => <span class="string">"CreditCard"</span>;
+
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge(<span class="keyword">decimal</span> amount) 
+        => <span class="type">Console</span>.WriteLine(<span class="string">$"Charged {amount} with Credit Card."</span>);
+
+    <span class="keyword">public</span> <span class="keyword">void</span> Refund(<span class="keyword">decimal</span> amount) 
+        => <span class="type">Console</span>.WriteLine(<span class="string">$"Refunded {amount} to Credit Card."</span>);
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">GiftCardPayment</span> : <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">public</span> <span class="keyword">string</span> Name => <span class="string">"GiftCard"</span>;
+
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge(<span class="keyword">decimal</span> amount) 
+        => <span class="type">Console</span>.WriteLine(<span class="string">$"Charged {amount} from Gift Card."</span>);
+
+    <span class="comment">// 🚨 Violation: Gift cards don't support refunds!</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> Refund(<span class="keyword">decimal</span> amount) 
+        => <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">NotSupportedException</span>(<span class="string">"Gift cards cannot be refunded!"</span>);
+}</code></pre>
+                </div>
+            </div>            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>🚨 Problems with this approach:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">💥</span>
+                            <span class="problem-text"><strong>Runtime Exceptions:</strong> GiftCard breaks client code expecting all payment methods to refund</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔄</span>
+                            <span class="problem-text"><strong>Broken Substitution:</strong> Cannot replace IPaymentMethod with GiftCard safely</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">📜</span>
+                            <span class="problem-text"><strong>Contract Violation:</strong> Subclass changes the expected behavior of Refund method</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🏗️</span>
+                            <span class="problem-text"><strong>Poor Design:</strong> Interface forces all implementations to support refunds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

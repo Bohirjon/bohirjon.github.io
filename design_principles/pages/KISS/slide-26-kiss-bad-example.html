@@ -1,0 +1,54 @@
+<section class="slide" data-slide="26">
+    <h2>KISS (Keep It Simple, Stupid)</h2>
+    <div class="subtitle">❌ Over-engineered Complex Solution</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout" style="align-items: center; min-height: 80vh;">
+            <div class="good-code-column-borderless">
+                <div class="code-bad-large">
+                    <pre><code><span class="comment">// Complex reflection-based factory with assembly scanning</span>
+<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="type">PaymentFactory</span>
+{
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">IPaymentProcessor</span> Create(<span class="keyword">string</span> processorName)
+    {
+        <span class="problem"><span class="comment">// Scan all assemblies to find the matching class</span>
+        <span class="keyword">var</span> type = <span class="type">AppDomain</span>.CurrentDomain.GetAssemblies()
+            .SelectMany(a => a.GetTypes())
+            .FirstOrDefault(t => t.Name == processorName && 
+                <span class="keyword">typeof</span>(<span class="type">IPaymentProcessor</span>).IsAssignableFrom(t));</span>
+
+        <span class="keyword">if</span> (type == <span class="keyword">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">InvalidOperationException</span>(<span class="string">"Processor not found"</span>);
+
+        <span class="problem"><span class="comment">// Use reflection to instantiate</span>
+        <span class="keyword">return</span> (<span class="type">IPaymentProcessor</span>)<span class="type">Activator</span>.CreateInstance(type)!;</span>
+    }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>🚨 Problems with this approach:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🐌</span>
+                            <span class="problem-text"><strong>Performance overhead:</strong> Assembly scanning is expensive</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔍</span>
+                            <span class="problem-text"><strong>Runtime errors:</strong> Reflection failures only discovered at runtime</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🧩</span>
+                            <span class="problem-text"><strong>Complex debugging:</strong> Hard to trace and understand</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔧</span>
+                            <span class="problem-text"><strong>Over-engineered:</strong> Unnecessary complexity for simple task</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

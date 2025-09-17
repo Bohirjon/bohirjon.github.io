@@ -1,0 +1,51 @@
+<section class="slide" data-slide="19">
+    <h2>Dependency Inversion Principle (DIP)</h2>
+    <div class="subtitle">❌ Tight Coupling</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout" style="align-items: center; min-height: 80vh;">
+            <div class="good-code-column-borderless">
+                <div class="code-bad-large">
+                    <pre><code><span class="comment">// Depends on concrete implementation, not abstraction</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">OrderService</span>
+{
+    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">CreditCardPayment</span> _payment;
+
+    <span class="keyword">public</span> <span class="type">OrderService</span>()
+    {
+        _payment = <span class="keyword">new</span> <span class="type">CreditCardPayment</span>(); <span class="comment">// tightly coupled</span>
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> ProcessOrder(<span class="keyword">decimal</span> amount)
+    {
+        _payment.Charge(amount); <span class="comment">// depends on implementation</span>
+    }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>🚨 Problems with this approach:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔗</span>
+                            <span class="problem-text"><strong>Tight Coupling:</strong> OrderService directly depends on CreditCardPayment implementation</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🚫</span>
+                            <span class="problem-text"><strong>Hard to swap:</strong> Cannot easily add new payment methods</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🧪</span>
+                            <span class="problem-text"><strong>Hard to Test:</strong> Cannot mock payment method for unit testing</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">💥</span>
+                            <span class="problem-text"><strong>Breaks easily:</strong> Changes in payment logic break OrderService</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

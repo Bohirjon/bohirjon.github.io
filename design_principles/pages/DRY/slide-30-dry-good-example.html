@@ -1,0 +1,61 @@
+<section class="slide" data-slide="30">
+    <h2>DRY - Good Example</h2>
+    <div class="subtitle">✅ Applying DRY - Extracted Reusable Logic</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout">
+            <div class="good-code-column-borderless">
+                <pre><code><span class="comment">// Extracted common calculation logic into reusable class</span>
+<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="type">PriceCalculator</span>
+{
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">decimal</span> CalculateTotal(<span class="type">IEnumerable</span>&lt;<span class="type">Item</span>&gt; items)
+    {
+        <span class="keyword">decimal</span> total = <span class="number">0</span>;
+        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> items)
+            total += item.Price * item.Quantity;
+        <span class="keyword">return</span> total;
+    }
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">OrderService</span>
+{
+    <span class="keyword">public</span> <span class="keyword">decimal</span> CalculateTotal(<span class="type">Order</span> order) 
+    {
+        <span class="keyword">return</span> <span class="type">PriceCalculator</span>.CalculateTotal(order.Items);
+    }
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">InvoiceService</span>
+{
+    <span class="keyword">public</span> <span class="keyword">decimal</span> CalculateInvoiceTotal(<span class="type">Invoice</span> invoice) 
+    {
+        <span class="keyword">return</span> <span class="type">PriceCalculator</span>.CalculateTotal(invoice.Items);
+    }
+}</code></pre>
+            </div>
+            
+            <div class="problems-column" style="display: flex; align-items: center; justify-content: center;">
+                <div class="problems-explanation">
+                    <h4>✨ DRY Benefits:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🎯</span>
+                            <span class="problem-text"><strong>Single source of truth</strong> - Logic centralized in one place</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔧</span>
+                            <span class="problem-text"><strong>Easy maintenance</strong> - Update logic in one location</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🐛</span>
+                            <span class="problem-text"><strong>Bug reduction</strong> - Fix once, fixed everywhere</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔄</span>
+                            <span class="problem-text"><strong>Reusability</strong> - Logic can be used across services</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

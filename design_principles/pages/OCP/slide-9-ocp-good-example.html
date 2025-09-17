@@ -1,0 +1,62 @@
+<section class="slide" data-slide="8">
+    <h2>Open/Closed Principle (OCP)</h2>
+    <div class="subtitle"></div>
+    <div class="slide-content">
+        <div class="srp-bad-layout">
+            <div class="good-code-column-borderless">
+                <pre><code><span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">string</span> Name { <span class="keyword">get</span>; }
+    <span class="keyword">void</span> Charge();
+}</code></pre>
+                <pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">CreditCardPayment</span> : <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">public</span> <span class="keyword">string</span> Name => <span class="string">"CreditCard"</span>;
+    
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge()
+    {
+        <span class="type">Console</span>.WriteLine(<span class="string">"Charging credit card..."</span>);
+    }
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PayPalPayment</span> : <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">public</span> <span class="keyword">string</span> Name => <span class="string">"PayPal"</span>;
+    
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge()
+    {
+        <span class="type">Console</span>.WriteLine(<span class="string">"Charging PayPal..."</span>);
+    }
+}</code></pre>
+            </div>
+            
+            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>OCP Benefits:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔒</span>
+                            <span class="problem-text"><strong>Closed for Modification:</strong> Existing code untouched</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">📖</span>
+                            <span class="problem-text"><strong>Open for Extension:</strong> New payment types added easily</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🧪</span>
+                            <span class="problem-text"><strong>Testable:</strong> Each payment method tested independently</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">�️</span>
+                            <span class="problem-text"><strong>Stable:</strong> Existing functionality remains stable</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🚀</span>
+                            <span class="problem-text"><strong>Scalable:</strong> Easy to add new features without risk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,55 @@
+<section class="slide" data-slide="3">
+    <h2>Single Responsibility Principle (SRP)</h2>
+    <div class="subtitle">Bad Example</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout">
+            <div class="bad-code-column">
+                <h3>⚠️ Violating SRP</h3>
+                <div class="code-bad-large">
+                    <h4>❌ Multiple Responsibilities in One Class</h4>
+                    <pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">OrderProcessor</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> ProcessOrder()
+    {
+        <span class="comment">// Validate order</span>
+        <span class="type">Console</span>.WriteLine(<span class="string">"Validating order..."</span>);
+        
+        <span class="comment">// Save order to database</span>
+        <span class="type">Console</span>.WriteLine(<span class="string">"Saving order..."</span>);
+        
+        <span class="comment">// Charge payment</span>
+        <span class="type">Console</span>.WriteLine(<span class="string">"Charging payment..."</span>);
+        
+        <span class="comment">// Send confirmation email</span>
+        <span class="type">Console</span>.WriteLine(<span class="string">"Sending email..."</span>);
+    }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>🚨 Problems with this approach:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔧</span>
+                            <span class="problem-text"><strong>Maintenance Nightmare:</strong> Changing email logic requires touching order processing code</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🧪</span>
+                            <span class="problem-text"><strong>Testing Complexity:</strong> Cannot test validation logic without also testing database and email</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔗</span>
+                            <span class="problem-text"><strong>High Coupling:</strong> All responsibilities are tightly coupled in one class</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">♻️</span>
+                            <span class="problem-text"><strong>No Reusability:</strong> Cannot reuse validation or email logic in other parts of the system</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

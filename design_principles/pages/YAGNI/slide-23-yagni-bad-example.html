@@ -1,0 +1,64 @@
+<section class="slide" data-slide="23">
+    <h2>_</h2>
+    <div class="subtitle"></div>
+    <div class="slide-content">
+        <div class="srp-bad-layout" style="align-items: center; min-height: 80vh;">
+            <div class="good-code-column-borderless">
+                <div class="code-bad-large">
+                    <pre><code><span class="comment">// Adding features that are not currently needed</span>
+<span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">ICustomerRepository</span>
+{
+    <span class="type">Customer</span> GetById(<span class="keyword">int</span> id);
+    <span class="type">IEnumerable</span>&lt;<span class="type">Customer</span>&gt; GetAll();
+    <span class="problem"><span class="type">IEnumerable</span>&lt;<span class="type">Customer</span>&gt; GetByCity(<span class="keyword">string</span> city);   <span class="comment">// Not needed</span></span>
+    <span class="problem"><span class="type">IEnumerable</span>&lt;<span class="type">Customer</span>&gt; GetByAge(<span class="keyword">int</span> age);       <span class="comment">// Not needed</span></span>
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">OrderService</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> ProcessOrder(<span class="keyword">decimal</span> amount, 
+        <span class="problem"><span class="keyword">string</span> couponCode = <span class="keyword">null</span>, 
+        <span class="keyword">int</span> loyaltyPoints = <span class="number">0</span></span>)
+    {
+        <span class="problem"><span class="keyword">if</span> (!<span class="keyword">string</span>.IsNullOrEmpty(couponCode))
+        {
+            ApplyCoupon(couponCode); <span class="comment">// future feature</span>
+        }
+
+        <span class="keyword">if</span> (loyaltyPoints > <span class="number">0</span>)
+        {
+            ApplyLoyaltyPoints(loyaltyPoints); <span class="comment">// speculative</span>
+        }</span>
+
+        <span class="type">Console</span>.WriteLine(<span class="string">$"Order processed for {amount}"</span>);
+    }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>🚨 Problems with this approach:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔧</span>
+                            <span class="problem-text"><strong>Unnecessary complexity:</strong> Methods that aren't currently used</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">⏰</span>
+                            <span class="problem-text"><strong>Wasted time:</strong> Building features for speculative future needs</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🧪</span>
+                            <span class="problem-text"><strong>More testing:</strong> Additional code paths and edge cases to test</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🛠️</span>
+                            <span class="problem-text"><strong>Maintenance overhead:</strong> More code to maintain and debug</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

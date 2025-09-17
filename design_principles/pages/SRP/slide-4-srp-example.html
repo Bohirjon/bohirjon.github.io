@@ -1,0 +1,51 @@
+<section class="slide" data-slide="4">
+    <h2>Single Responsibility Principle (SRP)</h2>
+    <div class="subtitle">How - Fixed Implementation</div>
+    <div class="slide-content">
+            <div class="services-columns">
+                <div class="services-column">
+                    <pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">OrderValidator</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> Validate() 
+    { 
+        <span class="type">Console</span>.WriteLine(<span class="string">"Validating order..."</span>); 
+    }
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">OrderRepository</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> Save() 
+    { 
+        <span class="type">Console</span>.WriteLine(<span class="string">"Saving order..."</span>); 
+    }
+}</code></pre>
+                </div>
+                
+                <div class="services-column">
+                    <pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PaymentService</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge() 
+    { 
+        <span class="type">Console</span>.WriteLine(<span class="string">"Charging payment..."</span>); 
+    }
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">EmailService</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> SendConfirmation() 
+    { 
+        <span class="type">Console</span>.WriteLine(<span class="string">"Sending confirmation email..."</span>); 
+    }
+}</code></pre>
+                </div>
+            </div>
+            <div class="benefits-summary">
+                <h4>Individual Service Classes:</h4>
+                <p>✓ Each class has a single, well-defined responsibility<br>
+                ✓ Easy to test each service independently<br>
+                ✓ Services can be reused in other parts of the system<br>
+                ✓ Changes to one service don't affect others</p>
+            </div>
+        </div>
+
+</section>

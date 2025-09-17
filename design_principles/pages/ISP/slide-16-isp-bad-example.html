@@ -1,0 +1,56 @@
+<section class="slide" data-slide="15">
+    <h2>Interface Segregation Principle (ISP)</h2>
+    <div class="subtitle">❌ Fat Interface Problem</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout">
+            <div class="good-code-column-borderless">
+                <pre><code><span class="comment">// Fat interface - forces all implementations to have all methods</span>
+<span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IWorker</span>
+{
+    <span class="keyword">void</span> Work();
+    <span class="keyword">void</span> Eat();
+    <span class="keyword">void</span> Sleep();
+    <span class="keyword">void</span> Program();
+    <span class="keyword">void</span> FixPlumbing();
+    <span class="keyword">void</span> Cook();
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">Developer</span> : <span class="type">IWorker</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> Work() => <span class="type">Console</span>.WriteLine(<span class="string">"Writing code"</span>);
+    <span class="keyword">public</span> <span class="keyword">void</span> Eat() => <span class="type">Console</span>.WriteLine(<span class="string">"Eating lunch"</span>);
+    <span class="keyword">public</span> <span class="keyword">void</span> Sleep() => <span class="type">Console</span>.WriteLine(<span class="string">"Sleeping"</span>);
+    <span class="keyword">public</span> <span class="keyword">void</span> Program() => <span class="type">Console</span>.WriteLine(<span class="string">"Programming"</span>);
+    
+    <span class="comment">// Forced to implement methods that don't make sense!</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> FixPlumbing() => <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">NotImplementedException</span>();
+    <span class="keyword">public</span> <span class="keyword">void</span> Cook() => <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">NotImplementedException</span>();
+}</code></pre>
+            </div>
+            
+            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>🚨 Problems with Fat Interfaces:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">💥</span>
+                            <span class="problem-text"><strong>Forced Implementation:</strong> Classes must implement methods they don't need</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔗</span>
+                            <span class="problem-text"><strong>Tight Coupling:</strong> Classes depend on methods they never use</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🧪</span>
+                            <span class="problem-text"><strong>Hard to Test:</strong> Must mock many irrelevant methods</span>
+                        </div>
+                        <div class="problem-item-inline">
+                            <span class="problem-icon">🔄</span>
+                            <span class="problem-text"><strong>Fragile:</strong> Changes affect unrelated classes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

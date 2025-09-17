@@ -1,0 +1,45 @@
+<section class="slide" data-slide="12">
+    <h2>Liskov Substitution Principle</h2>
+    <div class="subtitle">✅ Proper Implementation</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout">
+            <div class="good-code-column-borderless">
+                <pre><code><span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">string</span> Name { <span class="keyword">get</span>; }
+    <span class="keyword">void</span> Charge(<span class="keyword">decimal</span> amount);
+}
+
+<span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IRefundablePaymentMethod</span> : <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">void</span> Refund(<span class="keyword">decimal</span> amount);
+}</code></pre>
+            </div>
+
+            <div class="good-code-column-borderless">
+                <pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">CreditCardPayment</span> : <span class="type">IRefundablePaymentMethod</span>
+{
+    <span class="keyword">public</span> <span class="keyword">string</span> Name => <span class="string">"CreditCard"</span>;
+
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge(<span class="keyword">decimal</span> amount) 
+        => <span class="type">Console</span>.WriteLine(<span class="string">$"Charged {amount} with Credit Card."</span>);
+
+    <span class="keyword">public</span> <span class="keyword">void</span> Refund(<span class="keyword">decimal</span> amount) 
+        => <span class="type">Console</span>.WriteLine(<span class="string">$"Refunded {amount} to Credit Card."</span>);
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">GiftCardPayment</span> : <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">public</span> <span class="keyword">string</span> Name => <span class="string">"GiftCard"</span>;
+
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge(<span class="keyword">decimal</span> amount) 
+        => <span class="type">Console</span>.WriteLine(<span class="string">$"Charged {amount} from Gift Card."</span>);
+    
+    <span class="comment">// No refund method - Gift cards don't support refunds!</span>
+}
+</code>
+</pre>
+            </div>
+        </div>
+    </div>
+</section>

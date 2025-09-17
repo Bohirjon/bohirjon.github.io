@@ -1,0 +1,55 @@
+<section class="slide" data-slide="20">
+    <h2>DIP - Good Example</h2>
+    <div class="subtitle">✅ Dependency Injection</div>
+    <div class="slide-content">
+        <div class="srp-bad-layout">
+            <div class="good-code-column-borderless">
+                <pre><code><span class="keyword">public</span> <span class="keyword">interface</span> <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">void</span> Charge(<span class="keyword">decimal</span> amount);
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">CreditCardPayment</span> : <span class="type">IPaymentMethod</span>
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge(<span class="keyword">decimal</span> amount)
+        => <span class="type">Console</span>.WriteLine(<span class="string">$"Charged {amount} with Credit Card."</span>);
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">OrderService</span>
+{
+    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">IPaymentMethod</span> _payment;
+
+    <span class="keyword">public</span> <span class="type">OrderService</span>(<span class="type">IPaymentMethod</span> payment)
+    {
+        _payment = payment; <span class="comment">// injected</span>
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> ProcessOrder(<span class="keyword">decimal</span> amount)
+    {
+        _payment.Charge(amount); <span class="comment">// depends on abstraction</span>
+    }
+}</code></pre>
+            </div>
+            
+            <div class="problems-column">
+                <div class="problems-explanation">
+                    <h4>✨ DIP Benefits:</h4>
+                    <div class="problems-items-inline">
+                        <div class="problem-item-inline" style="white-space: nowrap;">
+                            <span class="problem-icon">🔄</span>
+                            <span class="problem-text"><strong>Flexible code</strong> - Easy to swap implementations</span>
+                        </div>
+                        <div class="problem-item-inline" style="white-space: nowrap;">
+                            <span class="problem-icon">🧪</span>
+                            <span class="problem-text"><strong>Testable</strong> - Mock interfaces easily</span>
+                        </div>
+                        <div class="problem-item-inline" style="white-space: nowrap;">
+                            <span class="problem-icon">⚡</span>
+                            <span class="problem-text"><strong>Reduced coupling</strong> - Business logic independent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

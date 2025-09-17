@@ -1,0 +1,63 @@
+<section class="slide" data-slide="5">
+    <h2>Single Responsibility Principle (SRP)</h2>
+    <div class="subtitle">_</div>
+    <div class="slide-content">
+        <div class="orchestrator-layout">
+            <div class="code-column">
+                <pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">OrderProcessor</span>
+{
+    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">OrderValidator</span> _validator;
+    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">OrderRepository</span> _repository;
+    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">PaymentService</span> _paymentService;
+    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">EmailService</span> _emailService;
+
+    <span class="keyword">public</span> OrderProcessor(
+        <span class="type">OrderValidator</span> validator,
+        <span class="type">OrderRepository</span> repository,
+        <span class="type">PaymentService</span> paymentService,
+        <span class="type">EmailService</span> emailService)
+    {
+        _validator = validator;
+        _repository = repository;
+        _paymentService = paymentService;
+        _emailService = emailService;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> ProcessOrder()
+    {
+        _validator.Validate();
+        _repository.Save();
+        _paymentService.Charge();
+        _emailService.SendConfirmation();
+    }
+}</code></pre>
+            </div>
+            
+            <div class="role-column">
+                <h4>🎼 OrderProcessor Role:</h4>
+                <div class="role-items-inline">
+                    <div class="role-item-inline">
+                        <span class="role-icon">🎯</span>
+                        <span class="role-text"><strong>Single Responsibility:</strong> Orchestrates workflow</span>
+                    </div>
+                    <div class="role-item-inline">
+                        <span class="role-icon">🔌</span>
+                        <span class="role-text"><strong>Dependency Injection:</strong> Receives services via constructor</span>
+                    </div>
+                    <div class="role-item-inline">
+                        <span class="role-icon">📋</span>
+                        <span class="role-text"><strong>Workflow Management:</strong> Defines operation sequence</span>
+                    </div>
+                    <div class="role-item-inline">
+                        <span class="role-icon">🧩</span>
+                        <span class="role-text"><strong>Loose Coupling:</strong> Depends on abstractions</span>
+                    </div>
+                    <div class="role-item-inline">
+                        <span class="role-icon">🧪</span>
+                        <span class="role-text"><strong>Testable:</strong> If email fails, OrderProcessor still succeeds at its job</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,66 @@
+<section class="slide" data-slide="9">
+    <div class="subtitle"></div>
+    <div class="slide-content">
+        <div class="factory-layout">
+            <div class="factory-column">
+                <pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PaymentFactory</span>
+{
+    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">Dictionary</span>&lt;<span class="keyword">string</span>, <span class="type">IPaymentMethod</span>&gt; _methods;
+
+    <span class="keyword">public</span> PaymentFactory(<span class="type">IEnumerable</span>&lt;<span class="type">IPaymentMethod</span>&gt; methods)
+    {
+        _methods = methods.ToDictionary(m => m.Name, m => m);
+    }
+
+    <span class="keyword">public</span> <span class="type">IPaymentMethod</span> GetPaymentMethod(<span class="keyword">string</span> name)
+    {
+        <span class="keyword">if</span> (_methods.TryGetValue(name, <span class="keyword">out</span> <span class="keyword">var</span> method))
+            <span class="keyword">return</span> method;
+
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">NotSupportedException</span>($<span class="string">"Not supported: {name}"</span>);
+    }
+}
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PaymentService</span>
+{
+    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">PaymentFactory</span> _factory;
+
+    <span class="keyword">public</span> PaymentService(<span class="type">PaymentFactory</span> factory)
+    {
+        _factory = factory;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> Charge(<span class="keyword">string</span> paymentType)
+    {
+        <span class="keyword">var</span> method = _factory.GetPaymentMethod(paymentType);
+        method.Charge();
+    }
+}</code></pre>
+            </div>
+            
+            <div class="service-column">
+                <div class="ocp-achievement">
+                    <h4>🎯 OCP Achievement:</h4>
+                    <div class="achievement-items">
+                        <div class="achievement-item">
+                            <span class="achievement-icon">🔒</span>
+                            <span class="achievement-text"><strong>PaymentService</strong> never changes</span>
+                        </div>
+                        <div class="achievement-item">
+                            <span class="achievement-icon">🏭</span>
+                            <span class="achievement-text"><strong>Factory</strong> handles new types automatically</span>
+                        </div>
+                        <div class="achievement-item">
+                            <span class="achievement-icon">🔌</span>
+                            <span class="achievement-text"><strong>New payments</strong> just implement interface</span>
+                        </div>
+                        <div class="achievement-item">
+                            <span class="achievement-icon">✨</span>
+                            <span class="achievement-text"><strong>Zero modification</strong> for extensions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
